@@ -1,0 +1,108 @@
+﻿<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roleta Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-bg">
+      <div class="app-overlay">
+        <div class="container">
+          <section class="hero-cover"></section>
+
+          <div class="title">
+            <p>Roleta Premium</p>
+          </div>
+
+          <div class="floating">
+            <button class="floating-btn">Perfil</button>
+            <button class="floating-btn">Som</button>
+          </div>
+
+          <div class="stats">
+            <button id="openDeposit" class="pill">Depositar</button>
+            <div class="pill">
+              <span>Saldo</span>
+              <strong id="balance">R$ 0,00</strong>
+            </div>
+            <div class="pill">
+              <span>Giro</span>
+              <strong>R$ 2,00</strong>
+            </div>
+          </div>
+
+          <div class="wheel-area">
+            <div class="wheel-wrapper">
+              <img src="pointer.webp" alt="Seta" class="pointer" />
+              <div class="wheel-frame">
+                <div id="wheel" class="wheel-inner"></div>
+              </div>
+              <div class="wheel-center"></div>
+            </div>
+            <div id="result" class="result"></div>
+          </div>
+
+          <div class="spin-area">
+            <button id="spinButton" class="spin-lip">Girar sua roleta</button>
+          </div>
+
+          <div class="prize-list" id="prizeList"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="depositModal" class="modal hidden">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Depositar via PIX</h3>
+          <button id="closeDeposit" class="link">Fechar</button>
+        </div>
+        <div class="form">
+          <label>Nome<input id="name" type="text" value="Visitante" /></label>
+          <label>E-mail<input id="email" type="email" placeholder="seu@email.com" /></label>
+          <label>CPF<input id="cpf" type="text" placeholder="Somente números" /></label>
+          <label>Telefone (WhatsApp)<input id="phone" type="text" placeholder="DDD + número" /></label>
+        </div>
+        <p class="label">Escolha o valor</p>
+        <div class="plans" id="plans"></div>
+        <div class="summary">
+          <span>Selecionado: R$ <strong id="selectedAmount">10</strong></span>
+          <span>Bônus: R$ <strong id="selectedBonus">0</strong></span>
+          <span>Total crédito: R$ <strong id="selectedTotal">10</strong></span>
+        </div>
+        <div class="actions">
+          <button id="generate" class="primary">Gerar QR Code</button>
+        </div>
+        <section id="pixResult" class="pix hidden" style="display:none">
+          <h4>PIX gerado</h4>
+          <div class="pix-content">
+            <img id="qrImage" alt="QR Code" />
+            <div>
+              <textarea id="qrText" rows="4" readonly></textarea>
+              <button id="copyPix">Copiar código PIX</button>
+            </div>
+          </div>
+          <p class="note">Após pagar, me chame no WhatsApp e eu libero o acesso.</p>
+        </section>
+        <div id="error" class="error hidden"></div>
+      </div>
+    </div>
+
+    <div id="winModal" class="modal hidden">
+      <div class="confetti" id="confetti"></div>
+      <div class="win-card">
+        <p class="win-title">Parabéns!</p>
+        <h3 id="winLabel"></h3>
+        <img id="winImage" alt="Prêmio" />
+        <button id="closeWin" class="primary">Fechar</button>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
